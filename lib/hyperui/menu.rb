@@ -40,7 +40,7 @@ module Hyperui
     end
 
     def classes
-      String.new('space-y-1').tap do |classes_str|
+      String.new('gap-y-1').tap do |classes_str|
         classes_str << " #{options.delete(:class)}" if options.key?(:class)
       end
     end
@@ -153,7 +153,7 @@ module Hyperui
               </span>
             </summary>
 
-            <ul class="mt-2 space-y-1 px-4">
+            <ul class="mt-2 gap-y-1 px-4">
               <% items.each do |item| %>
                 <%= item %>
               <% end %>

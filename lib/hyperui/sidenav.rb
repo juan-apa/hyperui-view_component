@@ -5,7 +5,7 @@ module Hyperui
     renders_one :header
 
     erb_template <<~HTML
-      <div class="relative lg:sticky top-0 h-screen flex flex-col justify-between border-e bg-white transition-transform duration-300 lg:transform-none z-50" id="sidenav-container">
+      <%= content_tag :div, class: classes, id:, **options do %>
         <input type="checkbox" id="sidenav-toggle" class="hidden peer">
 
         <!-- SideNav -->
@@ -26,7 +26,22 @@ module Hyperui
             <%= content %>
           </div>
         </div>
-      </div>
+      <% end %>
     HTML
+
+    attr_reader :id, :options
+
+    def initialize(id: 'sidenav-container', **kwargs)
+      super
+
+      @options = kwargs
+      @id = id
+    end
+
+    def classes
+      String.new('relative lg:sticky top-0 h-screen flex flex-col justify-between border-e bg-white transition-transform duration-300 lg:transform-none z-50').tap do |class_str|
+        class_str << " #{options.delete(:class)}" if options.key?(:class)
+      end
+    end
   end
 end

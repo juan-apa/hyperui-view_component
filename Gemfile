@@ -6,17 +6,7 @@ git_source(:github) { |repo| "https://github.com/#{repo}.git" }
 # Specify your gem's dependencies in hyperui.gemspec.
 gemspec
 
-gem 'puma'
-
-gem 'pg'
-
-gem 'propshaft'
-
-gem 'importmap-rails'
-
 gem 'rubocop', require: false
-
-gem 'stimulus-rails'
 
 gem 'tailwindcss-rails'
 
